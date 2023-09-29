@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Admin Page {% endblock %}
+
+{% block body %}
+
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Customers</th>
+            <th scope="col">Shop Items</th>
+            <th scope="col">Add Shop Items</th>
+            <th scope="col">View Orders</th>
+
+        </tr>
+
+    </thead> 
+    <tbody>
+        <tr>
+        <td><a href="/customers">Customers</a></td>
+        <td><a href="/shop-items">Shop Items</a></td>
+        <td><a href="/add-shop-items">Add Shop Items</a></td>
+        <td><a href="/view-orders">View Orders</a></td>
+        </tr>
+    </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %} Cart {% endblock %}
+
+
+{% block body %}
+
+<div class="container my-5">
+    <div class="row">
+        {% if cart %}
+
+        <h1 class="text-center mb-5" style="color: white;">Shopping Cart</h1>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+
+                    {% for item in cart %}
+
+                    <div class="row">
+                        <div class="col-sm-3 text-center align-self-center">
+                            <img src="{{ item.product.product_picture }}" alt="" class="img-fluid img-thumbnail shadow-sm" height="150px" width="150px">
+                        </div>
+                        <div class="col-sm-9">
+                            <div>
+                                <h3>{{ item.product.product_name }}</h3>
+                                <div class="my-3">
+                                    <label for="quantity">Quantity</label>
+                                    <a class="minus-cart btn" pid="{{item.id}}"><i class="fas fa-minus-square fa-lg"></i></a>
+                                    <span id="quantity">{{ item.quantity }}</span>
+                                    <a class="plus-cart btn " pid="{{ item.id }}"><i class="fas fa-plus-square fa-lg"></i></a>
+
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-0"><span><strong>Ksh {{ item.product.current_price }}</strong></span></p>
+                                    <a href="" class="remove-cart btn btn-sm btn-secondary mr-3 " pid="{{item.id}}">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Cart Summary </h3>
+                    <hr color="black">
+                    <ul class="list-group">
+                        {% for item in cart %}
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"><strong>{{item.product.product_name}}</strong><span id="amount">{{item.product.current_price}} X <span id="quantity{{item.id}}">{{ item.quantity}}</span></span></li>
+
+                        {% endfor %}
+
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amout <span>Ksh <span id="amount_tt">{{ amount }}</span></span></li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                            <div style="margin-top: 15px;">
+                                <strong>Total</strong><small>(Including Shipping)</small>
+                            </div>
+                            <span><strong>Ksh </strong><span id="totalamount"><strong>{{ total }}</strong></span></span>
+    
+                        </li>
+
+                    </ul>
+
+                    <div class="d-grid"><a href="/place-order" class="btn btn-primary">Place Order</a></div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        {% else %}
+
+        <h1 class="text-center mb-5" style="color: white;">Your Cart is Empty</h1>
+
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

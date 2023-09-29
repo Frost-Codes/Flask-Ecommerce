@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Shop Items {% endblock %}
+
+
+{% block body %}
+
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Previous Price</th>
+            <th scope="col">Current Price</th>
+            <th scope="col">In Stock</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Flash Sale</th>
+            <th scope="col">Add</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <form action="" method="POST", enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <td>{{ form.product_name }}</td>
+                <td>{{ form.previous_price }}</td>
+                <td>{{ form.current_price }}</td>
+                <td>{{ form.in_stock }}</td>
+                <td>{{ form.product_picture() }}</td>
+                <td>{{ form.flash_sale }}</td>
+                <td>{{ form.update_product() }}</td>
+            </form>
+        </tr>
+    </tbody>
+</table>
+
+
+{% endblock %}

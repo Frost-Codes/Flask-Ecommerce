@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" ></script>
+
+
+    <script src="https://kit.fontawesome.com/e24507d923.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" />
+
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Amazon | {% block title %} {% endblock %}</title>
+</head>
+<body style="background-color: rgb(124, 14, 151);">
+
+
+    <!-- navbar section -->
+    <nav class="navbar navbar-expand-lg" style="background-color: white;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="color: orange; font-size: 30px; margin-right: -2px;">
+          <i class="fa-brands fa-amazon"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/" style="font-family: cursive; font-size: 19px;">Amazon</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-grey" href="#" style="font-size: 17px;">About Us</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-grey" href="#" style="font-size: 17px;">Contact us</a>
+            </li>
+          </ul>
+
+          <form class="d-flex" role="search" action="/search" style="margin-right: 170px;" method="POST">
+            <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit">Search</button>
+          </form>
+        </div>
+
+        
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item mx-2" id="items">
+            
+            {% if cart | length < 1 %}
+            <a class="nav-link text-grey" href="/cart"><span class="badge bg-success"></span> Cart
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            {% else %}
+            <a class="nav-link text-grey" href="/cart"><span class="badge bg-success"></span> Cart
+              <i class="bi bi-{{ cart | length }}-square-fill"></i>
+            </a>
+            
+            {% endif %}
+            
+            
+          </li>
+
+          <li class="nav-item mx-2" id="items">
+            <a class="nav-link text-grey" href="#"><span class="badge bg-success"></span> WishList
+              <i class="fa-solid fa-heart"></i>
+            </a>
+          </li>
+
+          
+          <li class="nav-item dropdown mx-2">
+            <a class="nav-link dropdown-toggle text-grey" href="#" role="button", id="profileDropdown" 
+            data-bs-toggle="dropdown" aria-hidden="false">
+              Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+
+            
+              {% if current_user.is_authenticated %}
+              <li><a class="dropdown-item" href="/profile/{{ current_user.id }}">Profile <i class="fa-solid fa-user"></i></a></li>
+              <li><a class="dropdown-item" href="/orders">Orders <i class="fa-solid fa-truck-fast"></i></a></li>
+              <li><a class="dropdown-item" href="/logout">Log Out <i class="fa-solid fa-right-from-bracket"></i></a></li>
+
+              {% else %}
+              
+              <li><a class="dropdown-item" href="/login">Login <i class="fa-solid fa-right-to-bracket"></i></a></li>
+
+              {% endif %}
+
+            </ul>
+
+          </li>
+
+        </ul>
+
+
+      </div>
+    </nav>
+
+
+    {% for message in get_flashed_messages() %}
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 5px;">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    
+    </div>
+    {% endfor %}
+
+    {% block body %}
+
+
+    {% endblock %}
+
+
+    <footer class="container-fluid  text-center p-2 mt-5" style="background-color: orange; color: white;">
+      <a href="https://github.com/Frost-Codes" style="color: white;">Amazon</a> | <span>
+        <i class="fa-sharp fa-regular fa-copyright"></i></span> 2023 All rights reserved
+
+    </footer>
+
+    <script src="{{ url_for( 'static', filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for( 'static', filename='js/all.min.js') }}"></script>
+    <script src="{{ url_for( 'static', filename='js/jquery.js') }}"></script>
+
+    <script src="{{ url_for( 'static', filename='js/myScript.js') }}"></script>
+
+
+
+</body>
+    
+
+
+
+
+
+
+    
+    
+</body>
+</html>

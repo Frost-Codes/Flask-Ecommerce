@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Update Order {% endblock %}
+
+
+{% block body %}
+
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Order Status</th>
+            <th scope="col">Order Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <td>{{ form.order_status }}</td>
+                <td>{{ form.update() }}</td>
+            </form>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}
