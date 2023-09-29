@@ -7,9 +7,9 @@ from intasend import APIService
 
 views = Blueprint('views', __name__)
 
-API_PUBLISHABLE_KEY = 'ISPubKey_test_ca0331cb-8a01-4510-a711-e2260071ccb8'
+API_PUBLISHABLE_KEY = 'YOUR_PUBLISHABLE_KEY'
 
-API_TOKEN = 'ISSecretKey_test_c6f63b6f-06f6-441d-b5f0-dec432e2a0bd'
+API_TOKEN = 'YOUR_API_TOKEN'
 
 
 @views.route('/')
