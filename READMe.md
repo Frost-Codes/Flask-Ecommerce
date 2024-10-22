@@ -23,6 +23,7 @@ Efficient: Slim Python base image minimizes overhead.
 
 HOW TO USE 
 
-docker pull monish247/ecommerce_python_image:latest
+docker pull monish247/ecommerce_python_image:latest   
+
 docker run -itd -p 8034:80 monish247/ecommerce_python_image:latest
 
